@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Edu+TAS+Beginner&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
-html{
-    height: 100%;
-    width: 100%;
-}
 
 .days,
 .temperature,
@@ -29,7 +25,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    width: 26%;
+    width: 110px;
     opacity: 1;
 
 }
@@ -70,20 +66,18 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 auto;
-    width: 33%;
-    height: 100%;
+    margin: 2% auto;
+    width: 70vh;
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
-    border-radius: 20px;
-  
+    border-radius: 10px;
 }
 
 .search-bar {
     padding-top: 30px;
     opacity: 0.8;
-    width: 100%;
+    width: 500px;
 
 }
 
@@ -93,7 +87,7 @@ body {
     box-shadow: 0px 0px 1px 0.8px rgb(57, 57, 58);
     border-radius: 30px 30px;
     background-color: rgb(255, 255, 255);
-    width: 380px;
+    width: 370px;
     height: 26px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: bold;
@@ -236,6 +230,7 @@ h1 {
     font-size: 27px;
  
 }
+
 
 
 
