@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Edu+TAS+Beginner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+
+.days,
+.temperature,
+.search-bar,
+.date,
+.city,
+.city-name {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+
+body {
+    background-color: black;
+}
+
+.day{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 110px;
+    opacity: 1;
+
+}
+
+.day div{
+    opacity: 0.75;
+    width: 80px;
+    padding: 4px;
+    font-size: 17px;
+    
+}
+
+.day img{
+    width: 60px;
+    margin: 0;
+    padding: 0;
+    opacity: 2;
+}
+
+.day .temp-value{
+    font-size: 18.5px;
+    opacity: 2;
+    font-weight: 600;
+}
+
+.days {
+
+    margin-top: 80px;
+    background: linear-gradient(180.3deg, rgb(221, 221, 221) 5.5%, rgb(110, 136, 161) 90.2%);
+    border-radius: 13px;
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.295) ;
+    opacity: 1;
+    
+}
+
+.container {
+    background: linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255) 109.6%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2% auto;
+    width: 450px;
+    justify-content: center;
+    border: .2px rgb(162, 162, 231);
+    box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
+    border-radius: 10px;
+}
+
+.search-bar {
+    padding-top: 30px;
+    opacity: 0.8;
+    width: 500px;
+
+}
+
+.search-entry {
+
+    border: 1.2px solid rgb(70, 70, 70);
+    box-shadow: 0px 0px 1px 0.8px rgb(57, 57, 58);
+    border-radius: 30px 30px;
+    background-color: rgb(255, 255, 255);
+    width: 370px;
+    height: 26px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: justify;
+    opacity: 0.8;
+    padding-left: 34px;
+    text-transform: capitalize;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+ 
+
+}
+.search-entry::-webkit-search-cancel-button{
+ 
+    -webkit-appearance: none;
+    height: 17px;
+    width: 15px;
+    background: url("Pictures/xmark-solid.svg") no-repeat;
+    opacity: 0.6;
+}
+
+input[type="search"]:focus {
+    outline: none;
+    border: 1.2px solid rgba(34, 33, 33, 0.966);
+    box-shadow: 0px 0px 2px 0.5px rgb(7, 7, 7);
+}
+
+section img {
+    width: 200px;
+    text-align: center;
+    opacity: 0.8;
+    margin-top: 30px;
+}
+
+
+.date{
+    text-align: center;
+    width: 200px;
+    flex-wrap: wrap;
+    border-radius: 50px;
+   
+}
+
+#time {
+    font-size: 30px;
+    width: 500px;
+    font-weight: 600;
+    opacity: 0.8;
+}
+#date
+{
+    font-size: 25px;
+    width: 500px;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.city {
+    line-height: 60px;
+    text-align: center;
+    border: none;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+
+h1 {
+    opacity: 0.8;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+
+
+#b
+{
+    width: 30px;
+}
+.temp .degree-C-F:hover{
+    color:rgba(4, 4, 134, 0.692);
+    cursor: pointer;
+    
+}
+
+.temp {
+    text-align: center;
+    opacity: 0.75;
+    font-size: 60px;
+    font-weight: 600;
+    justify-self: center;
+    text-shadow: 3px 2px 1px  rgb(204, 204, 253) ;
+    align-self: center;
+    margin-right: 30px;
+}
+
+.name {
+    text-align: center;
+    font-weight: 30px;
+    font-weight: bold;
+    height: 20px;
+    opacity: 1;
+}
+
+
+
+#location{
+    border-radius: 50% 50%;
+    background-color: rgb(218, 219, 221);
+    margin-left: 6px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    padding: 0;
+
+  
+    opacity: 0.8;
+}
+
+#location-button{
+   font-size: 20px;
+   color:rgb(14, 14, 13);
+   text-align: center;
+   border-radius: 50% 50%;
+   opacity: 1;
+   
+
+   
+}
+
+#location:hover #location-button {
+
+    color:rgba(241, 1, 1, 0.795);
+    cursor: pointer;
+    
+}
+#city
+{
+    font-size: 27px;
+ 
+}
+
+
+
+
+

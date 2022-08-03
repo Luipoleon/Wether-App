@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/801caf6234.js" crossorigin="anonymous"></script>
+    <title>Weather forecast</title>
+</head>
+
+<body>
+    <section class="container">
+        <header class="search-bar">
+            <form id ="form">
+                <input type="search" name="search"  id="searchBar" class="search-entry" autocomplete="off">
+            </form>
+            <button id="location">
+                <i id="location-button" class="fa-solid fa-location-dot"></i>
+            </button>
+
+
+        </header>
+
+        <section class="temperature">
+
+            <div class="temp"><span class="temp-value"></span><span class="degree-C-F">°C</span></div>
+            <img src="Pictures/SVG/1-cloud.svg" alt="">
+
+            
+        </section>
+        <section class="date">
+            <div id="time"></div>
+            <div id="date"></div>
+            
+        </section>
+        
+        <section class="city">
+            <div id="city" ></div>
+        </section>
+
+        <section class="date">
+
+        </section>
+        <footer class="days">
+            <div class="day">
+                <div class="name">Monday</div>
+                <img src="Pictures/SVG/16-sun.svg" alt="">
+                <div class="day-temp"><span class="temp-value">27</span><span class="degree-C-F">°C</span></div>
+            </div>
+            <div class="day">
+                <div class="name">Tuesday</div>
+                <img src="Pictures/SVG/19-wind-rain.svg" alt="">
+                <div class="day-temp"><span class="temp-value">39</span><span class="degree-C-F">°C</span></div>
+            </div>
+            <div class="day">
+                <div class="name">Wendsday</div>
+                <img src="Pictures/SVG/21-thunder-wind.svg" alt="">
+                <div class="day-temp"><span class="temp-value">37.3</span><span class="degree-C-F">°C</span></div>
+            </div>
+            <div class="day">
+                <div class="name">Thursday</div>
+                <img src="Pictures/SVG/4-snow.svg" alt="">
+                <div class="day-temp"><span class="temp-value">36</span><span class="degree-C-F">°C</span></div>
+            </div>
+            <div class="day">
+                <div class="name">Friday</div>
+                <img src="Pictures/SVG/3-cloud-rain.svg" alt="">
+                <div class="day-temp"><span class="temp-value">20</span><span class="degree-C-F">°C</span></div>
+            </div>
+
+        </footer>
+
+
+    </section>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
