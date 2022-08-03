@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Edu+TAS+Beginner&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
+html{
+    height: 550px;
+}
 
 .days,
 .temperature,
@@ -72,7 +75,7 @@ body {
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
-    border-radius: 40px;
+    border-radius: 20px;
 }
 
 .search-bar {
