@@ -67,7 +67,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 2% auto;
-    width: 450px;
+    width: 70vh;
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
