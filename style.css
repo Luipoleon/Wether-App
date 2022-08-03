@@ -70,8 +70,8 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0 auto;
-    width: 450px;
-    height: 650px;
+    width: 33vh;
+    height: 100%;
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
