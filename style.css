@@ -68,11 +68,11 @@ body {
     flex-wrap: wrap;
     margin: auto auto;
     width: 70vh;
-    height: 80vh;
+    height: 100vh;
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
-    border-radius: 10px;
+    border-radius: 40px;
 }
 
 .search-bar {
