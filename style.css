@@ -9,7 +9,7 @@
 .city,
 .city-name {
     display: flex;
-    width: 100%;
+    width: 400px;
     align-items: center;
     justify-content: center;
     font-family: 'Cormorant Garamond', serif;
