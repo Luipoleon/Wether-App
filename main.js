@@ -19,7 +19,7 @@ loadDefaultData();
 
 function loadDefaultData()
 {
-    axios.get(`${apiUrl}weather?q=Paris&units=metric&appid=${apiKey}`).then(updateValues).catch();
+    axios.get(`${apiUrl}weather?q=London&units=metric&appid=${apiKey}`).then(updateValues).catch();
     let date = document.getElementById("date");
     let time = document.getElementById("time");
     date.innerHTML = currentDate.toDateString();
@@ -67,13 +67,10 @@ function updateForecast(response)
 {
     console.log(response);
 }
-
-
-
 function getCurrentDateTime(timezone)
 {
     let timezoneHours = timezone/3600;
-    let timezoneMinutes = (timezone%3600)/60;
+    let timezoneMinutes = (timezone%3600)/60; //Get the reminder of timezoneHours and convert ir to seconds 
     let date = document.getElementById("date");
     let time = document.getElementById("time");
     currentDate = new Date(); 
