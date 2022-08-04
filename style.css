@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Edu+TAS+Beginner&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
-body {
-    background-color: black;
-}
 
 .days,
 .temperature,
@@ -12,14 +9,15 @@ body {
 .city,
 .city-name {
     display: flex;
-    margin: 0 auto;
     width: 95%;
     align-items: center;
     justify-content: center;
     font-family: 'Cormorant Garamond', serif;
 }
 
-
+body {
+    background-color: black;
+}
 
 .day{
     display: flex;
@@ -28,6 +26,7 @@ body {
     text-align: center;
     width: 110px;
     opacity: 1;
+
 }
 
 .day div{
@@ -64,22 +63,31 @@ body {
 
 .container {
     background: linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255) 109.6%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin: 2% auto;
     width: 430px;
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
     border-radius: 10px;
+    
 }
 
 .search-bar {
     padding-top: 30px;
     opacity: 0.8;
-    width: 430px;
+    width: 100%;
     display: flex;
-    margin: 0 auto;
+    
 
+}
 
+form{
+    width: 85%;
+    display: flex;
+    
 }
 
 .search-entry {
@@ -88,7 +96,7 @@ body {
     box-shadow: 0px 0px 1px 0.8px rgb(57, 57, 58);
     border-radius: 30px 30px;
     background-color: rgb(255, 255, 255);
-    width: 370px;
+    width: 100%;
     height: 26px;
     font-family: 'Cormorant Garamond', serif;
     font-weight: bold;
@@ -125,7 +133,6 @@ section img {
 
 
 .date{
-    
     text-align: center;
     width: 200px;
     flex-wrap: wrap;
