@@ -127,8 +127,8 @@ input[type="search"]:focus {
 section img {
     width: 200px;
     text-align: center;
+    padding: 0;
     opacity: 0.8;
-    margin-top: 30px;
 }
 
 
@@ -177,21 +177,31 @@ h1 {
 {
     width: 30px;
 }
+.temperature{
+    flex-wrap: wrap;
+}
+.temp .degree-C-F{
+    font-size: 18px;
+    position:relative;
+    bottom:30px;
+    padding: 3px;
+}
 .temp .degree-C-F:hover{
-    color:rgba(4, 4, 134, 0.692);
+    color:rgb(0, 0, 92);
     cursor: pointer;
-    
 }
 
 .temp {
+    width: 100%;
     text-align: center;
+    margin: 0;
+    padding: 0;
     opacity: 0.75;
-    font-size: 60px;
+    font-size: 100px;
     font-weight: 600;
     justify-self: center;
     text-shadow: 3px 2px 1px  rgb(204, 204, 253) ;
     align-self: center;
-    margin-right: 30px;
 }
 
 .name {

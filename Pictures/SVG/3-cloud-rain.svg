@@ -16,15 +16,19 @@
     </g>
     <style>
         .rainDrop{
-            animation: rain 1.5s linear infinite;
+            animation: rain 1.5s  linear infinite;
+        
         }
         @keyframes rain{
+            
             0%{
                 transform:translate(0px,-8px);
             }
+           
             100%{
                 
                 transform:translate(-4px,0px);
+                opacity:0.5;
                 
             }
         }
