@@ -67,7 +67,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin: 2% auto;
-    width: 430px;
+    width: 450px;
     justify-content: center;
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
@@ -187,8 +187,12 @@ h1 {
     padding: 3px;
 }
 .temp .degree-C-F:hover{
-    color:rgb(0, 0, 92);
+    color:rgb(0, 0, 92) !important; 
+    opacity: 1 !important;
     cursor: pointer;
+}
+#F{
+    opacity: 0.5;
 }
 
 .temp {
@@ -246,7 +250,8 @@ h1 {
 }
 #city
 {
-    font-size: 27px;
+    font-size: 30px;
+    font-weight: 800;
  
 }
 

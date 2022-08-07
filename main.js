@@ -1,16 +1,20 @@
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wendesday", "Thursday", "Friday", "Saturday"];
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
     "September", "October", "November", "December"];
+const MAIN_TEMP = 0;
 
-let celsiusFarenheit = document.getElementsByClassName("degree-C-F");
+let celsius = document.getElementById("C");
+let farenheit = document.getElementById("F");
 let form = document.querySelector("#form");
 let locationButton = document.querySelector("#location-button");
 let apiKey = "b5baaf103625c4d622aae5b9f9a12952";
 let apiUrl = "https://api.openweathermap.org/data/2.5/";
 let currentDate = new Date();
 let timezone;
-
-celsiusFarenheit[0].addEventListener("click", changeCF);
+let tempC = new Array();
+let tempF = new Array();
+celsius.addEventListener("click", changeC);
+farenheit.addEventListener("click", changeF);
 form.addEventListener("submit", send);
 locationButton.addEventListener("click", getLocation)
 
@@ -43,23 +47,46 @@ function changeLocation(position) {
     console.log(position);
 }
 function updateValues(response) {
+
     let temp = document.getElementsByClassName("temp-value").item(0);
     let city = document.querySelector("#city");
-    let longitude = response.data.coord.lon;
-    let latitude = response.data.coord.lat;
+    let lon = response.data.coord.lon;
+    let lat = response.data.coord.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,current,minutely`;
 
     timezone = response.data.timezone;
+    tempC[MAIN_TEMP] = Math.round(response.data.main.temp);
+    tempF[MAIN_TEMP] = Math.round(tempC[MAIN_TEMP] * 1.8 + 32) 
+
 
     temp.innerHTML = Math.round(response.data.main.temp);
     city.innerHTML = response.data.name;
+
+    
     getCurrentDateTime(timezone);
-    axios.get(`${apiUrl}forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`).then(updateForecast).catch();
+    axios.get(`${apiUrl}&lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`).then(updateForecast).catch();
+    changeC();
 
     console.log(response);
 }
 
 function updateForecast(response) {
+    let dailyWeather = response.data.daily;
+    let tempDays = document.getElementsByClassName("temp-value");
+    let date;
+    let day = document.getElementsByClassName("name");
+    for(i=1;i<=5;i++)
+    {
+
+        date = new Date(dailyWeather[i].dt*1000);
+        day[i-1].innerHTML = DAYS[date.getDay()];
+        tempC[i] = Math.round(dailyWeather[i].temp.day);
+        tempF[i] = Math.round(tempC[i] * 1.8 + 32);
+        tempDays[i].innerHTML = tempC[i];
+    }
+    
     console.log(response);
+   
 }
 function getCurrentDateTime(timezone) {
     let timezoneHours = timezone / 3600;
@@ -74,22 +101,34 @@ function getCurrentDateTime(timezone) {
     time.innerHTML = currentDate.toLocaleTimeString();
 }
 //Change Farenheit Celcius 
-function changeCF() {
+function changeC() {
     let temp = document.getElementsByClassName("temp-value");
-
-    if (celsiusFarenheit[0].innerHTML == "°C") {
-        for (let i = 0; i < celsiusFarenheit.length; i++) {
-            temp[i].innerHTML = Math.round(parseInt(temp[i].innerHTML) * 1.8 + 32);
-            celsiusFarenheit[i].innerHTML = "°F";
-        }
-
+    let degreeCF = document.getElementsByClassName("degree-C-F");
+    let C = document.getElementById("C").style.opacity = "1";
+    let F = document.getElementById("F").style.opacity = "0.5";
+    temp[0].innerHTML = tempC[0];
+    for(let index=1;index<temp.length;index++)
+    {
+        degreeCF[index+2].innerHTML = "°C";
+        temp[index].innerHTML = tempC[index];
     }
-    else {
-        for (let i = 0; i < celsiusFarenheit.length; i++) {
-            temp[i].innerHTML = Math.round((temp[i].innerHTML - 32) * 5 / 9);
-            celsiusFarenheit[i].innerHTML = "°C";
-        }
+    
+
+
+}
+function changeF(){
+    
+    let temp = document.getElementsByClassName("temp-value");
+    let degreeCF = document.getElementsByClassName("degree-C-F");
+    let C = document.getElementById("F").style.opacity = "1";
+    let F = document.getElementById("C").style.opacity = "0.5";
+    temp[0].innerHTML = tempF[0];
+    for(let index=1;index<temp.length;index++)
+    {
+        degreeCF[index+2].innerHTML = "°F";
+        temp[index].innerHTML = tempF[index];
     }
+    
 
 }
 
