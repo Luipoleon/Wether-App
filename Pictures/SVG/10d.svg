@@ -23,10 +23,11 @@
         }
         @keyframes move{
             0%{
-                transform: translate(-2px, -2px);
+                transform: translate(-2px, -4px);
             }
             100%{
-                transform: translate(-3px, 3px);
+                transform: translate(-3px, 0px);
+                opacity:0.2;
             }
         }
         @keyframes wind{

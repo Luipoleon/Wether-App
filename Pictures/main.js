@@ -58,7 +58,8 @@ function updateValues(response) {
     timezone = response.data.timezone;
     tempC[MAIN_TEMP] = Math.round(response.data.main.temp);
     tempF[MAIN_TEMP] = Math.round(tempC[MAIN_TEMP] * 1.8 + 32);
-    icon.src = `Pictures/SVG/${response.data.weather[0].icon}.svg`;
+    // icon.src = `Pictures/SVG/${response.data.weather[0].icon}.svg`;
+    icon.src = `../01n.svg`;
     icon.alt = response.data.weather[0].description;
 
 
