@@ -84,7 +84,7 @@ function updateForecast(response) {
 
     for(i=1;i<=5;i++)
     {
-        date = new Date(dailyWeather[i].dt*1000);
+        date = new Date((dailyWeather[i].dt+timezone)*1000);
         day[i-1].innerHTML = DAYS[date.getDay()];
         tempC[i] = Math.round(dailyWeather[i].temp.day);
         tempF[i] = Math.round(tempC[i] * 1.8 + 32);

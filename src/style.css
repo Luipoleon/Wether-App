@@ -114,7 +114,6 @@ form{
     -webkit-appearance: none;
     height: 17px;
     width: 15px;
-    background: url("Pictures/xmark-solid.svg") no-repeat;
     opacity: 0.6;
 }
 
