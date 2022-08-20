@@ -22,7 +22,7 @@ loadDefaultData();
 
 
 function loadDefaultData() {
-    axios.get(`${apiUrl}weather?q=London&units=metric&appid=${apiKey}`).then(updateValues).catch();
+    axios.get(`${apiUrl}weather?q=Guadalajara&units=metric&appid=${apiKey}`).then(updateValues).catch();
     let date = document.getElementById("date");
     let time = document.getElementById("time");
     date.innerHTML = currentDate.toDateString();
@@ -58,7 +58,7 @@ function updateValues(response) {
     timezone = response.data.timezone;
     tempC[MAIN_TEMP] = Math.round(response.data.main.temp);
     tempF[MAIN_TEMP] = Math.round(tempC[MAIN_TEMP] * 1.8 + 32);
-    icon.src = `Pictures/SVG/${response.data.weather[0].icon}.svg`;
+    icon.src = `/Pictures/SVG/${response.data.weather[0].icon}.svg`;
     icon.alt = response.data.weather[0].description;
 
 
@@ -89,7 +89,7 @@ function updateForecast(response) {
         tempC[i] = Math.round(dailyWeather[i].temp.day);
         tempF[i] = Math.round(tempC[i] * 1.8 + 32);
         tempDays[i].innerHTML = tempC[i];
-        icons[i-1].src = `Pictures/SVG/${response.data.daily[i].weather[0].icon}.svg`;
+        icons[i-1].src = `/Pictures/SVG/${response.data.daily[i].weather[0].icon}.svg`;
         icons[i-1].alt = response.data.daily[i].weather[0].description;
 
     }

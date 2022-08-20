@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="src/style.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -12,19 +13,16 @@
 </head>
 
 <body>
-    <section class="container">
+    <section class="wrapper">
         <header class="search-bar">
             <form id="form">
-                <input type="search" name="search" id="searchBar" class="search-entry" autocomplete="off">
+                <input type="search" name="search-input" id="search-input" autocomplete="off" placeholder="Search a city">
             </form>
             <div id="l">
-                <button id="location">
-                    <i id="location-button" class="fa-solid fa-location-dot"></i>
+                <button id="location-button">
+                    <i id="location-icon" class="fa-solid fa-location-dot"></i>
                 </button>
             </div>
-
-
-
         </header>
 
         <section class="temperature">

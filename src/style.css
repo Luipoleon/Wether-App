@@ -61,7 +61,7 @@ body {
     
 }
 
-.container {
+.wrapper {
     background: linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255) 109.6%);
     display: flex;
     flex-direction: row;
@@ -90,7 +90,7 @@ form{
     
 }
 
-.search-entry {
+#search-input {
 
     border: 1.2px solid rgb(70, 70, 70);
     box-shadow: 0px 0px 1px 0.8px rgb(57, 57, 58);
@@ -109,13 +109,19 @@ form{
  
 
 }
-.search-entry::-webkit-search-cancel-button{
+#search-input::-webkit-search-cancel-button{
  
     -webkit-appearance: none;
+    background: url("/Pictures/xmark-solid.svg") no-repeat;
     height: 17px;
     width: 15px;
     opacity: 0.6;
 }
+
+#search-input::-webkit-input-placeholder{
+    text-transform: none;
+}
+
 
 input[type="search"]:focus {
     outline: none;
@@ -229,7 +235,7 @@ h1 {
 
 
 
-#location{
+#location-button{
     border-radius: 50% 50%;
     background-color: rgb(218, 219, 221);
     margin-left: 6px;
@@ -237,27 +243,21 @@ h1 {
     width: 30px;
     border: none;
     padding: 0;
-
-  
     opacity: 0.8;
 }
 
-#location-button{
+#location-icon{
    font-size: 20px;
    color:rgb(14, 14, 13);
    text-align: center;
    border-radius: 50% 50%;
    opacity: 1;
-   
-
-   
+      
 }
 
-#location:hover #location-button {
-
+#location-icon:hover, #location-button {
     color:rgba(241, 1, 1, 0.795);
     cursor: pointer;
-    
 }
 #city
 {
