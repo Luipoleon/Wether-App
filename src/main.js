@@ -3,16 +3,17 @@ const MONTHS = ["January", "February", "March", "April", "May", "June", "July", 
     "September", "October", "November", "December"];
 const MAIN_TEMP = 0;
 
-let celsius = document.getElementById("C");
-let farenheit = document.getElementById("F");
-let form = document.querySelector("#form");
-let locationButton = document.querySelector("#location-button");
-let apiKey = "b5baaf103625c4d622aae5b9f9a12952";
-let apiUrl = "https://api.openweathermap.org/data/2.5/";
+const celsius = document.getElementById("C");
+const farenheit = document.getElementById("F");
+const form = document.querySelector("#form");
+const locationButton = document.querySelector("#location-button");
+const apiKey = "f87be47dba932c04ee16ed4f73c5db4d";
+const apiUrl = "https://api.openweathermap.org/data/2.5/";
+const tempC = new Array();
+const tempF = new Array();
 let currentDate = new Date();
 let timezone;
-let tempC = new Array();
-let tempF = new Array();
+
 celsius.addEventListener("click", changeC);
 farenheit.addEventListener("click", changeF);
 form.addEventListener("submit", send);
@@ -23,37 +24,40 @@ loadDefaultData();
 
 function loadDefaultData() {
     axios.get(`${apiUrl}weather?q=Guadalajara&units=metric&appid=${apiKey}`).then(updateValues).catch();
-    let date = document.getElementById("date");
-    let time = document.getElementById("time");
+    const date = document.getElementById("date");
+    const time = document.getElementById("time");
     date.innerHTML = currentDate.toDateString();
     time.innerHTML = currentDate.toLocaleTimeString();
 }
+
 function getLocation() {
-    let searchBar = document.querySelector("#searchBar");
-    searchBar.value = "";
+    let searchInput = document.querySelector("#search-input");
+    searchInput.value = "";
     navigator.geolocation.getCurrentPosition(changeLocation);
 }
+
 function send(event) {
     event.preventDefault();
-    let city = document.getElementById("searchBar").value;
-    let searchBar = document.querySelector("#searchBar");
-    searchBar.value = "";
+    const city = document.getElementById("search-input").value;
+    const searchInput = document.querySelector("#search-input");
+    searchInput.value = "";
     axios.get(`${apiUrl}weather?q=${city}&units=metric&appid=${apiKey}`).then(updateValues).catch();
 }
 function changeLocation(position) {
-    let latitud = position.coords.latitude;
-    let longitude = position.coords.longitude;
-    axios.get(`${apiUrl}weather?lat=${latitud}&lon=${longitude}&units=metric&appid=${apiKey}`).then(updateValues).catch();
-    console.log(position);
+ ;
+    const latitud = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    axios.get(`${apiUrl}weather?lat=${latitud}&lon=${longitude}&units=metric&appid=${apiKey}`)
+    .then(updateValues).catch();
 }
 function updateValues(response) {
+   
+    const temp = document.getElementsByClassName("temp-value").item(0);
+    const city = document.querySelector("#city");
+    const lon = response.data.coord.lon;
+    const lat = response.data.coord.lat;
 
-    let temp = document.getElementsByClassName("temp-value").item(0);
-    let city = document.querySelector("#city");
-    let lon = response.data.coord.lon;
-    let lat = response.data.coord.lat;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,current,minutely`;
-    let icon = document.querySelector("#mainIcon");
+    const icon = document.querySelector("#mainIcon");
 
     timezone = response.data.timezone;
     tempC[MAIN_TEMP] = Math.round(response.data.main.temp);
@@ -67,34 +71,47 @@ function updateValues(response) {
 
     
     getCurrentDateTime(timezone);
-    axios.get(`${apiUrl}&lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`).then(updateForecast).catch();
+    axios.get(`${apiUrl}forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`).then(updateForecast).catch();
     changeC();
 
-    console.log(response);
 }
 
 function updateForecast(response) {
-    let dailyWeather = response.data.daily;
-    let tempDays = document.getElementsByClassName("temp-value");
+    
+    const dailyWeather = response.data.list;
+    const tempDays = document.getElementsByClassName("temp-value");
+    const day = document.getElementsByClassName("name");
+    const icons = document.getElementsByClassName("icon");
     let date;
-    let day = document.getElementsByClassName("name");
-    let icons = document.getElementsByClassName("icon");
-    
-    
+    let currentDay;
+    let dayOfWeek = 0;
 
-    for(i=1;i<=5;i++)
+    for(i=1;i<=dailyWeather.length;i++)
     {
+      
         date = new Date((dailyWeather[i].dt+timezone)*1000);
-        day[i-1].innerHTML = DAYS[date.getDay()];
-        tempC[i] = Math.round(dailyWeather[i].temp.day);
-        tempF[i] = Math.round(tempC[i] * 1.8 + 32);
-        tempDays[i].innerHTML = tempC[i];
-        icons[i-1].src = `/Pictures/SVG/${response.data.daily[i].weather[0].icon}.svg`;
-        icons[i-1].alt = response.data.daily[i].weather[0].description;
-
+        currentDay = date.getDay();
+        console.log(currentDay);
+        day[dayOfWeek].innerHTML = DAYS[date.getDay()];
+        tempC[dayOfWeek + 1] = Math.round(dailyWeather[i].main.temp);
+        tempF[dayOfWeek + 1] = Math.round(tempC[dayOfWeek + 1] * 1.8 + 32);
+        tempDays[dayOfWeek + 1].innerHTML = tempC[dayOfWeek + 1];
+        icons[dayOfWeek].src = `/Pictures/SVG/${dailyWeather[i].weather[0].icon}.svg`;
+        icons[dayOfWeek].alt = dailyWeather[i].weather[0].description;
+        i++;
+        while(i<dailyWeather.length && currentDay == date.getDay())
+        {
+            date = new Date((dailyWeather[i].dt+timezone)*1000);
+            i++;
+        }
+        dayOfWeek++;
+        
+        if(dayOfWeek == 5)
+        {
+            break
+        }
     }
     
-    console.log(response);
    
 }
 function getCurrentDateTime(timezone) {
@@ -109,6 +126,7 @@ function getCurrentDateTime(timezone) {
     date.innerHTML = currentDate.toDateString();
     time.innerHTML = currentDate.toLocaleTimeString();
 }
+
 //Change Farenheit Celcius 
 function changeC() {
     let temp = document.getElementsByClassName("temp-value");
