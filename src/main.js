@@ -49,6 +49,7 @@ function getLocation() {
 
 function send(event) {
     event.preventDefault();
+    const city = searchInput.value;
     searchInput.value = "";
     axios.get(`${apiUrl}weather?q=${city}&units=metric&appid=${apiKey}`).then(updateValuesWeather).catch();
 }
