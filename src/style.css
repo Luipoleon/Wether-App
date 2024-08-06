@@ -1,7 +1,25 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Edu+TAS+Beginner&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
+/* Body */
+html{
+    font-size: 62.5%;
+}
 
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    font-size: 1.6rem;
+    box-sizing: border-box;
+}
+
+/* Weather Details */
 .days,
 .temperature,
 .search-bar,
@@ -15,52 +33,49 @@
     font-family: 'Cormorant Garamond', serif;
 }
 
-body {
-    background-color: black;
-}
-
-.day{
+/* Day */
+.day {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
     width: 110px;
+    height: 13rem;
     opacity: 1;
-
+    position: relative;
 }
 
-.day div{
+.day div {
     opacity: 0.75;
     width: 80px;
     padding: 4px;
     font-size: 17px;
-    
 }
 
-.day img{
+.day img {
     width: 60px;
     margin: 0;
     padding: 0;
     opacity: 2;
 }
 
-.day .temp-value{
+.day .temp-value {
     font-size: 18.5px;
     opacity: 2;
     font-weight: 600;
 }
 
+/* Weather Forecast */
 .days {
-
     margin-top: 80px;
     background: linear-gradient(180.3deg, rgb(221, 221, 221) 5.5%, rgb(110, 136, 161) 90.2%);
     border-radius: 13px;
-    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.295) ;
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.295);
     opacity: 1;
     width: 100%;
-    
 }
 
+/* Wrapper */
 .wrapper {
     background: linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255) 109.6%);
     display: flex;
@@ -72,26 +87,22 @@ body {
     border: .2px rgb(162, 162, 231);
     box-shadow: 0px -1px 3px 3px rgb(231, 231, 255);
     border-radius: 10px;
-    
 }
 
+/* Search Bar */
 .search-bar {
     padding-top: 30px;
     opacity: 0.8;
     width: 100%;
     display: flex;
-    
-
 }
 
-form{
+form {
     width: 85%;
     display: flex;
-    
 }
 
 #search-input {
-
     border: 1.2px solid rgb(70, 70, 70);
     box-shadow: 0px 0px 1px 0.8px rgb(57, 57, 58);
     border-radius: 30px 30px;
@@ -106,22 +117,19 @@ form{
     padding-left: 34px;
     text-transform: capitalize;
     background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
- 
-
 }
-#search-input::-webkit-search-cancel-button{
- 
+
+#search-input::-webkit-search-cancel-button {
     -webkit-appearance: none;
-    background: url("/Pictures/xmark-solid.svg") no-repeat;
+    background: url("../Pictures/xmark-solid.svg") no-repeat;
     height: 17px;
     width: 15px;
     opacity: 0.6;
 }
 
-#search-input::-webkit-input-placeholder{
+#search-input::-webkit-input-placeholder {
     text-transform: none;
 }
-
 
 input[type="search"]:focus {
     outline: none;
@@ -129,6 +137,7 @@ input[type="search"]:focus {
     box-shadow: 0px 0px 2px 0.5px rgb(7, 7, 7);
 }
 
+/* Temperature Section */
 section.temperature img {
     position: relative;
     right: 23.5%;
@@ -138,23 +147,20 @@ section.temperature img {
     padding-top: 20px;
     opacity: 0.8;
     z-index: 0;
-    
 }
 
-#window{
+#window {
     width: 200px;
     position: relative;
     left: 21%;
     z-index: 1;
 }
 
-
-.date{
+.date {
     text-align: center;
     width: 200px;
     flex-wrap: wrap;
     border-radius: 50px;
-   
 }
 
 #time {
@@ -163,8 +169,8 @@ section.temperature img {
     font-weight: 600;
     opacity: 0.8;
 }
-#date
-{
+
+#date {
     font-size: 25px;
     width: 500px;
     font-weight: 600;
@@ -179,7 +185,7 @@ section.temperature img {
     font-weight: 600;
 }
 
-
+/* Heading */
 h1 {
     opacity: 0.8;
     font-weight: 500;
@@ -187,28 +193,29 @@ h1 {
     text-align: center;
 }
 
-
-
-
-#b
-{
+#b {
     width: 30px;
 }
-.temperature{
+
+/* Temperature Value */
+.temperature {
     flex-wrap: wrap;
 }
-.temp .degree-C-F{
+
+.temp .degree-C-F {
     font-size: 18px;
-    position:relative;
-    bottom:30px;
+    position: relative;
+    bottom: 30px;
     padding: 3px;
 }
-.temp .degree-C-F:hover{
-    color:rgb(0, 0, 92) !important; 
+
+.temp .degree-C-F:hover {
+    color: rgb(0, 0, 92) !important;
     opacity: 1 !important;
     cursor: pointer;
 }
-#F{
+
+#F {
     opacity: 0.5;
 }
 
@@ -221,11 +228,12 @@ h1 {
     font-size: 100px;
     font-weight: 600;
     justify-self: center;
-    text-shadow: 3px 2px 1px  rgb(204, 204, 253) ;
+    text-shadow: 3px 2px 1px rgb(204, 204, 253);
     align-self: center;
 }
 
-.name {
+/* Day Name */
+.day-name {
     text-align: center;
     font-weight: 30px;
     font-weight: bold;
@@ -233,9 +241,8 @@ h1 {
     opacity: 1;
 }
 
-
-
-#location-button{
+/* Location Button */
+#location-button {
     border-radius: 50% 50%;
     background-color: rgb(218, 219, 221);
     margin-left: 6px;
@@ -246,27 +253,36 @@ h1 {
     opacity: 0.8;
 }
 
-#location-icon{
-   font-size: 20px;
-   color:rgb(14, 14, 13);
-   text-align: center;
-   border-radius: 50% 50%;
-   opacity: 1;
-      
+#location-icon {
+    font-size: 20px;
+    color: rgb(14, 14, 13);
+    text-align: center;
+    border-radius: 50% 50%;
+    opacity: 1;
 }
 
-#location-icon:hover, #location-button {
-    color:rgba(241, 1, 1, 0.795);
+#location-icon:hover,
+#location-button {
+    color: rgba(241, 1, 1, 0.795);
     cursor: pointer;
 }
-#city
-{
+
+/* City */
+#city {
     font-size: 30px;
     font-weight: 800;
- 
 }
 
+/* Day Icon */
+.day-icon {
+    height: 4.5rem;
+}
 
-
-
-
+.day-icon-border{
+    /* border: 2px solid #00000070; */
+    box-shadow: 0px 0px 0.5px 0.25px #00000020;
+    background-color: #eee;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+}

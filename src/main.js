@@ -1,3 +1,16 @@
+"use strict";
+// DOM Elements
+
+const date = document.getElementById("date");
+const time = document.getElementById("time");
+const searchInput = document.querySelector("#search-input");
+const city = document.querySelector("#city");
+const temp = document.getElementsByClassName("temp-value");
+const degreeCF = document.getElementsByClassName("degree-C-F");
+
+// Constants and Variables
+
+
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wendesday", "Thursday", "Friday", "Saturday"];
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
     "September", "October", "November", "December"];
@@ -23,37 +36,32 @@ loadDefaultData();
 
 
 function loadDefaultData() {
-    axios.get(`${apiUrl}weather?q=Guadalajara&units=metric&appid=${apiKey}`).then(updateValues).catch();
-    const date = document.getElementById("date");
-    const time = document.getElementById("time");
+    axios.get(`${apiUrl}weather?q=Guadalajara&units=metric&appid=${apiKey}`).then(updateValuesWeather).catch();
     date.innerHTML = currentDate.toDateString();
     time.innerHTML = currentDate.toLocaleTimeString();
 }
 
 function getLocation() {
-    let searchInput = document.querySelector("#search-input");
+    const city = searchInput.value;
     searchInput.value = "";
     navigator.geolocation.getCurrentPosition(changeLocation);
 }
 
 function send(event) {
     event.preventDefault();
-    const city = document.getElementById("search-input").value;
-    const searchInput = document.querySelector("#search-input");
     searchInput.value = "";
-    axios.get(`${apiUrl}weather?q=${city}&units=metric&appid=${apiKey}`).then(updateValues).catch();
+    axios.get(`${apiUrl}weather?q=${city}&units=metric&appid=${apiKey}`).then(updateValuesWeather).catch();
 }
 function changeLocation(position) {
- ;
     const latitud = position.coords.latitude;
     const longitude = position.coords.longitude;
     axios.get(`${apiUrl}weather?lat=${latitud}&lon=${longitude}&units=metric&appid=${apiKey}`)
-    .then(updateValues).catch();
+    .then(updateValuesWeather).catch();
 }
-function updateValues(response) {
+function updateValuesWeather(response) {
    
     const temp = document.getElementsByClassName("temp-value").item(0);
-    const city = document.querySelector("#city");
+   
     const lon = response.data.coord.lon;
     const lat = response.data.coord.lat;
 
@@ -62,7 +70,7 @@ function updateValues(response) {
     timezone = response.data.timezone;
     tempC[MAIN_TEMP] = Math.round(response.data.main.temp);
     tempF[MAIN_TEMP] = Math.round(tempC[MAIN_TEMP] * 1.8 + 32);
-    icon.src = `/Pictures/SVG/${response.data.weather[0].icon}.svg`;
+    icon.src = `Pictures/SVG/${response.data.weather[0].icon}.svg`;
     icon.alt = response.data.weather[0].description;
 
 
@@ -80,24 +88,25 @@ function updateForecast(response) {
     
     const dailyWeather = response.data.list;
     const tempDays = document.getElementsByClassName("temp-value");
-    const day = document.getElementsByClassName("name");
-    const icons = document.getElementsByClassName("icon");
+    const day = document.getElementsByClassName("day-name");
+    const icons = document.getElementsByClassName("day-icon");
     let date;
     let currentDay;
     let dayOfWeek = 0;
 
-    for(i=1;i<=dailyWeather.length;i++)
+    for(let i=1;i<=dailyWeather.length;i++)
     {
       
         date = new Date((dailyWeather[i].dt+timezone)*1000);
         currentDay = date.getDay();
         console.log(currentDay);
         day[dayOfWeek].innerHTML = DAYS[date.getDay()];
+        icons[dayOfWeek].src = `Pictures/SVG/${dailyWeather[i].weather[0].icon}.svg`;
+        icons[dayOfWeek].alt = dailyWeather[i].weather[0].description;
+        
         tempC[dayOfWeek + 1] = Math.round(dailyWeather[i].main.temp);
         tempF[dayOfWeek + 1] = Math.round(tempC[dayOfWeek + 1] * 1.8 + 32);
         tempDays[dayOfWeek + 1].innerHTML = tempC[dayOfWeek + 1];
-        icons[dayOfWeek].src = `/Pictures/SVG/${dailyWeather[i].weather[0].icon}.svg`;
-        icons[dayOfWeek].alt = dailyWeather[i].weather[0].description;
         i++;
         while(i<dailyWeather.length && currentDay == date.getDay())
         {
@@ -108,7 +117,7 @@ function updateForecast(response) {
         
         if(dayOfWeek == 5)
         {
-            break
+            break;
         }
     }
     
@@ -129,10 +138,8 @@ function getCurrentDateTime(timezone) {
 
 //Change Farenheit Celcius 
 function changeC() {
-    let temp = document.getElementsByClassName("temp-value");
-    let degreeCF = document.getElementsByClassName("degree-C-F");
-    let C = document.getElementById("C").style.opacity = "1";
-    let F = document.getElementById("F").style.opacity = "0.5";
+    const C = document.getElementById("C").style.opacity = "1";
+    const F = document.getElementById("F").style.opacity = "0.5";
     temp[0].innerHTML = tempC[0];
     for(let index=1;index<temp.length;index++)
     {
@@ -144,10 +151,8 @@ function changeC() {
 }
 function changeF(){
     
-    let temp = document.getElementsByClassName("temp-value");
-    let degreeCF = document.getElementsByClassName("degree-C-F");
-    let C = document.getElementById("F").style.opacity = "1";
-    let F = document.getElementById("C").style.opacity = "0.5";
+    const C = document.getElementById("F").style.opacity = "1";
+    const F = document.getElementById("C").style.opacity = "0.5";
     temp[0].innerHTML = tempF[0];
     for(let index=1;index<temp.length;index++)
     {
